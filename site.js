@@ -97,7 +97,8 @@ function burst(x, y) {
   }
 }
 
-const STATIC = !/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && /github\.io$/.test(location.hostname);
+// На GitHub Pages аккаунты работают через хаб (SITE.api); без него сайт — только витрина.
+const STATIC = !/^(localhost|127\.0\.0\.1)$/.test(location.hostname) && /github\.io$/.test(location.hostname) && !(window.BL && BL.site && BL.site.api);
 async function api(path, { method = "GET", body } = {}) {
   if (STATIC) throw new Error("Аккаунты пока работают только в лаунчере Brawl Legends");
   const headers = { "Content-Type": "application/json" };
