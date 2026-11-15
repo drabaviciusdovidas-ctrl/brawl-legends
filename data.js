@@ -5,7 +5,7 @@ window.BL = {
   site: {
     ip: "x41.joinserver.xyz:25671",
     version: "1.20.4",
-    launcher: "/download/BrawlLegends-Launcher-setup.exe",
+    launcher: "download/BrawlLegends-Launcher-setup.exe",
     discord: "", // ссылка на Discord, если появится
   },
 
