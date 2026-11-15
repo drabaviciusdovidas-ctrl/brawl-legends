@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brawl Legends — Minecraft-сервер в стиле Brawl Stars</title>
+  <meta name="description" content="Brawl Legends — Minecraft-сервер в стиле Brawl Stars: 28 городов, дерево веток, 16 богов, режимы Brawl, рыбалка, подарки дня и свой лаунчер." />
+  <meta name="theme-color" content="#1b4fd8" />
+  <link rel="icon" href="tx/stardrop.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rubik:wght@500;700;800;900&display=swap" />
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="bravl.css" />
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <a class="skip" href="#view">К содержимому</a>
+
+  <header class="nav">
+    <a class="brand" href="#/" aria-label="Brawl Legends — главная"><img class="brand-logo" src="tx/logo_big.png" alt="Brawl Legends" /></a>
+    <nav class="links" id="links">
+      <a href="#/" data-route="home">Главная</a>
+      <a href="#/tree" data-route="tree">Ветки</a>
+      <a href="#/gods" data-route="gods">Боги</a>
+      <a href="#/guide" data-route="guide">Гайд</a>
+      <a href="#/modes" data-route="modes">Режимы</a>
+      <a href="#/ranks" data-route="ranks">Привилегии</a>
+      <div class="more">
+        <button class="more-btn" id="moreBtn" aria-haspopup="true">Ещё <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="more-menu">
+          <a href="#/cities" data-route="cities"><b>Города</b><small>все 28 по порядку</small></a>
+          <a href="#/rewards" data-route="rewards"><b>Награды</b><small>подарки, кейсы, рыбалка</small></a>
+          <a href="#/commands" data-route="commands"><b>Команды</b><small>шпаргалка и клавиши</small></a>
+          <a href="#/faq" data-route="faq"><b>FAQ</b><small>частые вопросы</small></a>
+          <a href="#/news" data-route="news"><b>Новости</b><small>что нового</small></a>
+        </div>
+      </div>
+    </nav>
+    <span class="nav-status" id="navStatus"><span class="dot"></span>…</span>
+    <div class="nav-right" id="navRight"></div>
+    <button class="burger" id="burger" aria-label="Меню"><i></i><i></i><i></i></button>
+  </header>
+
+  <main id="view" class="enter"></main>
+
+  <footer class="foot">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#/"><img class="brand-logo big" src="tx/logo_big.png" alt="Brawl Legends" /></a>
+        <p class="muted">Minecraft-сервер в стиле Brawl Stars. Города, ветки, боги и режимы — в одном мире.</p>
+        <button class="foot-ip" id="footIp" data-tip="Скопировать IP"></button>
+        <div class="muted tiny" id="footStats"></div>
+      </div>
+      <div><h4>Игра</h4><a href="#/tree">Дерево веток</a><a href="#/gods">Боги</a><a href="#/cities">Города</a><a href="#/modes">Режимы</a></div>
+      <div><h4>Помощь</h4><a href="#/guide">Гайд</a><a href="#/commands">Команды</a><a href="#/faq">FAQ</a><a href="#/news">Новости</a></div>
+      <div><h4>Аккаунт</h4><a href="#/register">Регистрация</a><a href="#/login">Вход</a><a href="#/cabinet">Кабинет</a><a href="download/BrawlLegends-Launcher-setup.exe">Лаунчер</a></div>
+    </div>
+    <p class="muted tiny legal">© <span id="footYear"></span> Brawl Legends. Лаунчер работает с лицензией Minecraft: Java Edition.
+      Не является официальным продуктом Minecraft или Supercell. Не одобрено и не связано с Mojang, Microsoft или Supercell.</p>
+  </footer>
+
+  <div id="scrim"></div>
+  <aside class="drawer" id="drawer" aria-label="Подробности"></aside>
+  <button class="to-top" id="toTop" aria-label="Наверх"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+  <div class="tip" id="tip" hidden></div>
+  <div class="toast" id="toast" hidden></div>
+  <script src="data.js"></script>
+  <script src="goditems.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>
