@@ -4,6 +4,8 @@ const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const view = $("#view");
 const BL = window.BL;
 const SITE = BL.site;
+// Аккаунты и API живут на хабе (Render); сайт на GitHub Pages ходит туда.
+const API = (SITE.api || "").replace(/\/$/, "");
 
 /* =====================  Иконки  ===================== */
 const I = {
@@ -100,7 +102,7 @@ async function api(path, { method = "GET", body } = {}) {
   if (STATIC) throw new Error("Аккаунты пока работают только в лаунчере Brawl Legends");
   const headers = { "Content-Type": "application/json" };
   if (token) headers.Authorization = `Bearer ${token}`;
-  const r = await fetch(`/api${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined });
+  const r = await fetch(`${API}/api${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined });
   let data = null;
   try { data = await r.json(); } catch {}
   if (!r.ok) {
@@ -1106,7 +1108,7 @@ async function bindSkin() {
   $("#skModel").onclick = async (e) => {
     const b = e.target.closest("button"); if (!b) return; setModelUi(b.dataset.m); show3d(SKIN.url);
     const img = new Image(); img.onload = () => renderFaces(img); if (SKIN.url) img.src = SKIN.url;
-    if (!SKIN.file && SKIN.saved?.has) { try { SKIN.saved = await fetch(`/api/me/skin/model?model=${SKIN.model}`, { method: "POST", headers: { Authorization: `Bearer ${token}` } }).then((r) => r.json()); showGameCmd(SKIN.saved); toast("Модель рук сохранена"); } catch {} }
+    if (!SKIN.file && SKIN.saved?.has) { try { SKIN.saved = await fetch(`${API}/api/me/skin/model?model=${SKIN.model}`, { method: "POST", headers: { Authorization: `Bearer ${token}` } }).then((r) => r.json()); showGameCmd(SKIN.saved); toast("Модель рук сохранена"); } catch {} }
   };
 
   $(".sk-ctrl").onclick = (e) => {
@@ -1120,7 +1122,7 @@ async function bindSkin() {
   $("#skSave").onclick = async () => {
     if (!SKIN.file) return; skinErr(""); $("#skSave").disabled = true; $("#skSave").classList.add("busy");
     try {
-      const r = await fetch(`/api/me/skin?model=${SKIN.model}`, { method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "image/png" }, body: SKIN.file });
+      const r = await fetch(`${API}/api/me/skin?model=${SKIN.model}`, { method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "image/png" }, body: SKIN.file });
       const data = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(data.error || "Ошибка " + r.status);
       SKIN.saved = data; SKIN.file = null; card.classList.remove("dirty");
